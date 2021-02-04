@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+	var arrayPersonas = new Array();
+	var masPersonas   = false;
+	var fechaTotal 	  = false;
+
+
+	class Persona {
+		constructor(nombre, edad){
+			this.nombre = nombre;
+			this.edad 	= edad;
+		}
+	}
+
+	function fnombre(arrayPersonas) {
+		nombre = prompt("Escriba un nombre.", "Juan");
+		for (var persona of arrayPersonas) { // recorro el array de personas
+			var propiedad = persona.nombre;
+			if (nombre == propiedad) {
+				alert("Nombre introducido anteriormente, escriba otro");
+				fnombre(arrayPersonas);
+			}
+		}
+		return nombre;
+	}
+	function faño() {
+		var añoActual  = new Date();
+		añoElegido = prompt("Escriba en que año nacio", "1990");
+		if (añoElegido > añoActual.getFullYear()) {
+			document.write("Error:");
+			faño();
+		}
+		return año;
+	}
+	function fmes() {
+		mes = prompt("Escriba en que año nacio", "4");
+		if (mes < 1 || mes > 12) {
+			alert("El mes introducido es incorrecto, escriba otro");
+			fmes();
+		}
+		return mes;
+	}
+	function fdia() {
+		var dia = prompt("Escriba en que año nacio", "19");
+		if (dia < 0 || dia > 31){
+			alert("El dia introducido es incorrecto, escriba otro");
+			fdia();
+		}
+		return dia;
+	}
+	function mostrarViejos (arrayPersonas) {
+		var arrayViejos = new Array();
+		var i = 0;
+		for (var persona of arrayPersonas) {
+			var propiedad = persona.edad;
+			if (propiedad >= 100) {
+				arrayViejos[i] = persona;
+				document.write(persona.nombre + " tiene: " + persona.edad);
+			}
+			i++;
+		}
+		for (var persona of arrayViejos) {
+			document.write(persona.nombre + " tiene " + persona.edad + " años.");
+		}
+
+	}
+	do {
+		alert("Escriba el nombre y fecha de nacimiento de cada persona que desee introducir: comencemos.");
+		nombre = fnombre(arrayPersonas);
+		do {	
+			año = faño();
+			mes = fmes();
+			dia = fdia();
+			fNacimiento	= new Date(año,mes,dia);
+			persona1    = new Persona(nombre,fNacimiento);
+			if (fNacimiento > fechaActual){
+				fechaTotal == false;
+			}else {
+				fechaTotal = true;
+			}
+		}while(fechaTotal == false)
+
+		arrayPersonas[nombre] = fNacimiento;
+			
+		var respuesta = prompt("Quiere añadir mas personas? (s/n)", "n")
+        if (respuesta == "s") {
+            masPersonas = true;
+        }
+    }while (masPersonas == true);
+
+	mostrarViejos(arrayPersonas);
+	
+
+</script>
+</body>
+</html>
+
+Cuando no se deseen introducir más datos el programa mostrará mediante el método write() los siguientes 
+listados y en el siguiente orden:
+
+	1. Las personas que tienen 100 o más años en orden descendente de edad.
+	2. Todas las personas con su edad en años.
+	3. Las personas cuyo cumpleaños es hoy.
+	4. La persona beneficiada con la cesta de Navidad elegida de forma perfectamente aleatoria.

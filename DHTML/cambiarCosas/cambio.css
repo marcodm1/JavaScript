@@ -1,0 +1,29 @@
+.p1 {
+    background-color: red;
+}
+
+.p2 {
+    background-color: green;
+}
+
+.fondoRojo {
+    background-color: red;
+}
+
+.fondoVerde {
+    background-color: green;
+}
+
+.fondoAzul {
+    background-color: blue;
+}
+
+#contenedor1 {
+    width: 150px;
+    margin: auto;
+}
+
+.contenedor2 {
+    width: 300px;
+    margin: auto;
+}

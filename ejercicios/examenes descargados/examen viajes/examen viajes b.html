@@ -1,0 +1,235 @@
+<!--			VALORACIÓN
+----------------------------------------------------
+Clase Tramo.
+  Propiedades				0,1
+  Método velocidad()			0,2
+Clase Viaje.
+  Propiedades				0,2
+  Método duracion()			0,4
+  Método llegada()			0,4
+  Método kmts()				0,3
+  Método media()			0,4 
+Clase Vehiculo.
+  Propiedades				0,2
+  Método horas()			0,4
+  Método kmts()				0,3
+Función pedir_fecha()
+  Variables y control de formato	0,4
+  Subcadenas y control de rangos	0,4
+  Control menor que hoy			0,3
+Programa
+  Variables y formato matricula		0,5
+  Matricula sin repetir			0,4
+  Estr. general y creación de objetos	1,6
+Además
+  Pedir y establecer hora en la fecha	0,5
+				     ---------
+					7,0	
+-->
+ <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="utf-8">
+      <title>Objetos vehiculos</title>
+      <script>
+      // Definición de la clase Tramo
+         function Tramo (txtDescri, numDistancia, numTiempo) {
+                // Definición de propiedades
+			this.descripcion	= txtDescri;
+			this.distancia		= numDistancia;		// distancia en Kms
+			this.tiempo		= numTiempo;		// duracion en minutos
+		// Definición de métodos
+			this.velocidad          = fnvelocidad;
+         } 
+      // Definición de la clase Viaje
+         function Viaje (txtDestino, dSalida, arrayTramos) {
+		// Definición de propiedades
+			this.destino		= txtDestino;
+			this.salida		= dSalida;		// tipo fecha
+			this.tramos		= arrayTramos;		// array de tramos
+		// Definición de métodos
+			this.duracion		= fnduracion;		// duracion del viaje + paradas en minutos
+			this.kmts		= fnkmts_viaje;
+			this.llegada		= fnllegada;		// tipo date
+			this.media		= fnmedia;		// en Km / hora sin contar las paradas
+	}
+      // Definición de la clase Vehiculo
+	 function Vehiculo (txtMatricula, txtModelo, dAdquisicion, numT_Autonomia, numKm_Autonomia, arrayViajes) {
+		// Definición de propiedades
+			this.matricula		= txtMatricula;
+			this.modelo		= txtModelo;
+			this.adquisicion	= dAdquisicion;		// fecha de adquisición
+			this.t_autonomia	= numT_Autonomia;	// tiempo de autonomía en minutos
+			this.km_autonomia	= numKm_Autonomia;	// Kmts de autonomía
+			this.viajes		= arrayViajes;		// array de viajes
+		// Definición de métodos
+			this.horas		= fnhoras;
+			this.kmts		= fnkmts_rodados;
+	 }
+	// Definición de métodos
+	   function fnvelocidad() {
+		return this.distancia * 60 / this.tiempo;
+	   }
+	   function fnduracion() {
+		var minutos = 0;
+		for (var i = 0; i < this.tramos.length; i++) {
+		    minutos += this.tramos[i].tiempo;
+                }
+		minutos += (this.tramos.length -1) * 30
+		return minutos;
+	   }
+	   function fnllegada() {
+		var llega = new Date();
+		llega.setTime(this.salida.getTime() + this.duracion() * 60 * 1000);
+		return llega;
+	   }
+	   function fnkmts_viaje() {
+		var km = 0;
+		for (var i = 0; i < this.tramos.length; i++) {
+		    km += this.tramos[i].distancia;
+                }
+		return km;
+           }
+	   function fnmedia() {
+		var tiempo_repostando = (this.tramos.length - 1) * 30;
+		var media = this.kmts() * 60 / (this.duracion() - tiempo_repostando);
+		return media;
+	   }
+	   function fnhoras() {
+		var minutos = 0;
+		for (var i = 0; i < this.viajes.length; i++) {
+			for (var j = 0; j < this.viajes[i].tramos.length; j++) {
+				minutos += this.viajes[i].tramos[j].tiempo;
+			}
+		}
+		return minutos / 60;
+	   }
+	   function fnkmts_rodados() {
+		var total = 0;
+		for (var i = 0; i < this.viajes.length; i++) {
+			total += this.viajes[i].kmts();
+		}
+		return total;
+	   }
+
+// funciones
+	   function pedir_fecha() {
+		var fecha_ini     = "";
+		var fecha_exp     = /[0-9]{4}-[0-9]{2}-[0-9]{2}/;
+		var fecha_hoy     = new Date();
+		var fecha         = new Date();
+		var anio_aux      = 0;
+		var mes_aux       = 0;
+		var dia_aux       = 0;
+		var texto         = "Fecha (aaaa-mm-dd):";
+		var seguir        = true;
+		do {
+		  seguir  = true;
+		  fecha_ini = prompt(texto, "aaaa-mm-dd");
+		  if (!fecha_exp.test(fecha_ini)) {
+			seguir  = false;
+			texto = "Formato de fecha erroneo. Introduzca de nuevo";
+		  }
+		  anio_aux = parseInt(fecha_ini.substr(0,4));
+		  mes_aux  = parseInt(fecha_ini.substr(5,2));
+		  dia_aux  = parseInt(fecha_ini.substr(8,2));
+		  if (mes_aux < 1 || mes_aux > 12) {
+			seguir = false;
+			texto  = "Mes entre 1 y 12. Introduzca otra";
+	    	  }
+		  if (dia_aux < 1 || dia_aux > 31) {
+			seguir = false;
+			texto  = "Dia entre 1 y 31. Introduzca otra";
+		  }
+		  fecha = new Date(anio_aux, mes_aux - 1, dia_aux);
+	    	  if (fecha > fecha_hoy) {
+			seguir = false;
+			texto  = "Fecha muy alta. Introduzca otra";
+	    	  }
+		} while (!seguir);
+		return fecha;
+	   }
+      </script>
+    </head>
+    <body>
+Pagina 2
+      <script>
+// Variables
+	var vehiculos     = new Array();
+	var viajes_aux    = new Array();
+	var tramos_aux    = new Array();
+	var matricula_aux = "";
+	var matricula_exp = /[0-9]{4}[ ][A-Z]{3}/;
+	var modelo_aux    = "";
+	var adqui_aux	  = new Date();
+	var tmp_auto_aux  = 0;
+	var kms_auto_aux  = 0;
+    var destino_aux   = "";
+	var salida_aux    = new Date();
+	var hora_aux      = 0;
+    var minutos_aux   = 0;
+	var descri_aux    = "";
+	var distancia_aux = 0;
+	var tiempo_aux    = 0;
+	var texto         = "";
+	var seguir        = true;
+	var i             = 0;
+// Instrucciones	
+	do {
+	  texto = "Matricula:";
+	  do {
+	    seguir  = true;
+	    matricula_aux = prompt(texto, "nnnn aaa");
+	    if (!matricula_exp.test(matricula_aux)) {
+		seguir  = false;
+		texto = "Matrícula erronea. Introduzca de nuevo";
+	    }
+	    for (i = 0; i < vehiculos.length; i++) {
+		if (vehiculos[i].matricula == matricula_aux) {
+		    seguir  = false;
+		    texto = "Matrícula repetida. Introduzca otra";
+		}
+	    }
+	  } while (!seguir);
+	  modelo_aux = prompt ("Marca y modelo:", "Seat Ibiza");
+	  adqui_aux = pedir_fecha();
+	  do {
+		var tmp_auto_aux = parseInt(prompt("Minutos de autonomía", 120));
+	  } while (tmp_auto_aux < 1);
+	  do {
+		var kms_auto_aux = parseInt(prompt("Kilómetros de autonomía", 100));
+	  } while (kms_auto_aux < 1); 
+	  viajes_aux = new Array();
+	  do {
+	    destino_aux = prompt("Introduzca lugar de destino:", "Tordillos");
+	    salida_aux = pedir_fecha();
+	    while (salida_aux < adqui_aux) {
+		alert("La fecha debe ser posterior a la compra del vehículo");
+		salida_aux = pedir_fecha();
+	    }
+	    do {
+		hora_aux = parseInt(prompt("Hora entre 0 y 23:", 10));
+	    } while (hora_aux < 0 || hora_aux > 23);
+	    salida_aux.setHours(hora_aux);
+	    do {
+		minutos_aux = parseInt(prompt("Minutos entre 0 y 59:", 10));
+	    } while (minutos_aux < 0 || minutos_aux > 59);
+	    salida_aux.setMinutes(minutos_aux);
+	    tramos_aux = new Array();
+	    do {
+		descri_aux    = prompt ("Descripción del tramo", "Madrid-Cuenca");
+		do {
+		    distancia_aux = parseInt(prompt("Introduzca distancia menor que autonomía en Kms:", 50));
+		} while (distancia_aux < 1 || distancia_aux > kms_auto_aux);
+		do {
+		    tiempo_aux = parseInt(prompt("Introduzca tiempo menor que autonomía en minutos:", 60));
+		} while (tiempo_aux < 1 || tiempo_aux > tmp_auto_aux);
+		tramos_aux[tramos_aux.length] = new Tramo(descri_aux, distancia_aux, tiempo_aux);
+	    } while (confirm("Más tramos ?"));
+	  viajes_aux[viajes_aux.length] = new Viaje(destino_aux, salida_aux, tramos_aux);
+	  } while (confirm("Más viajes ?"));
+	  vehiculos[vehiculos.length] = new Vehiculo(matricula_aux, modelo_aux, adqui_aux, tmp_auto_aux, kms_auto_aux, vehiculos);
+	} while (confirm ("Más vehículos ?"));
+      </script>
+    </body>
+    </html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+
+    class Tramo {
+        // información de los tramos entre cargas de la batería de cada viaje:
+        velocidadMediaKmsHora(kms, duracionMinutos) {
+            var media = (kms*60)/duracionMinutos;
+            return media;
+        }
+        constructor (desdeHasta, kms, duracionMinutos){
+            this.desdeHasta      = desdeHasta;
+            this.kms             = kms;
+            this.duracionMinutos = duracionMinutos;
+        }
+    }
+    class Viaje {
+        // información de cada viaje con sus correspondientes tramos:
+       
+        duracionMinutos();  // entre tramo y tramo se hace una parada de 30 minutos
+        kmts();
+        fechaLlegada();     
+        velocidadMediaKmsHoraDescontandoParadas();
+        constructor (destino, fechaSalida, tramos){ // objetos tramo
+            this.destino     = destino;
+            this.fechaSalida = fechaSalida;
+            this.tramos      = tramos;
+        }
+    }
+    class Vehiculo {
+        // información de sus viajes y tramos:
+        horasSinParadas();  // total de horas viajadas (sin contar las paradas)
+        kmtsTotales();  
+        constructor (matricula, modelo, fechaAdquisicion, minutosAutonomia, kmsAutonomia, viajes){
+            this.matricula        = matricula;
+            this.modelo           = modelo;
+            this.fechaAdquisicion = fechaAdquisicion;
+            this.minutosAutonomia = minutosAutonomia;
+            this.kmsAutonomia     = kmsAutonomia;
+            this.viajes           = viajes;
+        }
+
+    }
+
+            // metodos
+    function añadirTramo (arrayTramos) {
+        var masTramos   = false;
+        var kms = 0;
+        var i = 0; 
+            // pedimos los datos al usuario
+        var desde       = prompt("Introduzca ciudad de salida: " , "Madrid");
+        var hasta       = prompt("Introduzca ciudad de llegada: ", "BCN");
+
+        do {
+            kms = parseInt(prompt("Introduzca cantidad de kms: "  , "600"));
+        }while (kms < fsefsfsfsefssef);
+        
+        var minutos     = parseInt(prompt("Introduzca cantidad de minutos total del viaje: ", "360"));
+            // ahora creamos el tramo
+        var tramo       = new Tramo(desde + " - " + hasta, kms, minutos); 
+        arrayTramos.push(tramo);
+           
+    }
+    function añadirViaje (arrayViajes, arrayTramos) {
+        var fechaActual = new Date();
+        var fechaSalida = new Date();
+            // pedimos los datos al usuario
+        var destino = prompt("Introduzca destino final: " , "Francia"); 
+        do {
+            do {
+                dia = prompt("Introduzca el dia de salida: " , "19");
+            }while (dia < 1 || dia > 31);
+            do {
+                mes = prompt("Introduzca el mes de salida: " , "11");
+            }while (mes < 1 || mes > 12);
+            do {
+                año = prompt("Introduzca el año de salida: " , "1990");
+            }while (año >= fechaActual.getFullYear());
+
+            do {
+                var hora = prompt("Introduzca la hora de salida: " , "10");
+            }while (hora < 0 || hora > 24);
+            
+            do {
+                var minuto = prompt("Introduzca el minuto de salida: " , "10");
+            }while (minuto < 0 || minuto > 60);
+
+            fechaSalida = new Date(año,mes,dia,hora,minuto);
+        }while(fechaSalida < fechaActual);
+        
+        var viaje   = new Viaje(destino, fechaSalida, arrayTramos);
+        arrayViajes.push(viaje);
+    }
+    function añadirCoche (arrayCoches, arrayViajes, arrayTramos) {
+        var fechaActual         = new Date();
+        var fechaAdquisicion    = new Date();
+        var matriculaNumeros    = 0;
+        var matriculaLetras     = "";
+        var minutosAutonomia    = 0;
+        var kmsAutonomia        = 0;
+        var dia                 = 0;
+        var mes                 = 0;
+        var año                 = 0;
+            do {
+                var matriculaNumeros = prompt("Introduzca la numeracion de su matricula: " , "1234");
+                var matriculaLetras  = prompt("Introduzca las letras de su matricula: " , "ABC");
+            }while (matriculaNumeros.length != 4 && matriculaLetras.length != 3);
+        var matricula = matriculaNumeros + " " + matriculaLetras;
+        var modelo = prompt("Introduzca el modelo del coche: " , "Seat Ibiza");
+        do {
+            do {
+                dia = prompt("Introduzca el dia de obtencion del vehiculo: " , "19");
+            }while (dia < 1 || dia > 31);
+            do {
+                mes = prompt("Introduzca el mes de obtencion del vehiculo: " , "11");
+            }while (mes < 1 || mes > 12);
+            do {
+                año = prompt("Introduzca el año de obtencion del vehiculo: " , "1990");
+            }while (año >= fechaActual.getFullYear());
+
+            fechaAdquisicion = new Date(fecha);
+        }while (fechaAdquisicion >  fechaActual);
+        
+        do {
+            minutosAutonomia = parseInt(prompt("Introduzca los minutos de autonomia que tiene el coche: " , "60"));         
+        }while (minutosAutonomia < 0);
+        do {
+            kmsAutonomia = prompt("Introduzca los kilometros de autonomia " , "100");
+        }while (minutosAutonomia < 0);
+
+        var coche = new Vehiculo(matricula, modelo, fechaAdquisicion, minutosAutonomia, kmsAutonomia, arrayViajes);
+        arrayCoches.push(coche);
+    }
+    
+    
+            // main
+    var arrayTramos = new Array();
+    var arrayViajes = new Array();
+    var arrayCoches = new Array();
+    do {   
+        añadirTramo(arrayTramos);
+        añadirViaje(arrayViajes, arrayTramos);
+        añadirCoche(arrayCoches, arrayViajes, arrayTramos);
+        
+        var respuesta = prompt("Quiere añadir mas vehiculos? (s/n)", "n")
+        if (respuesta == "s") { // mejor usar el confirm
+            masTramos = true;
+        }
+    }while (masTramos == true);
+
+
+
+
+</script>
+</body>
+</html>

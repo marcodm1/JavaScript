@@ -1,0 +1,101 @@
+<!--
+******** VALORACION ********
+Introducir los datos		0,5
+Listado de centenarios
+  Selección (array aux.)	0,5
+  Ordenación y listado		0,7
+Listado con la edad		0,5
+Listado de cumpleañeros		0,3
+Imprimir el premiado		0,5
+-->
+<DOCTYPE html>
+<html>
+ <head>
+ </head>
+ <body>
+  <script>
+// Definición de clases y funciones
+function Persona (txtnombre, dfecha) {
+	this.nombre     = txtnombre;
+	this.nacimiento = dfecha;
+}
+
+// Definición de variables
+   var datos       = new Array();
+   var centenarios = new Array();
+   var nombre      = "";
+   var hoy         = new Date();
+   var fecha       = new Date();
+   var anio        = 0;
+   var mes         = 0;
+   var dia         = 0;
+   var repe        = false;
+   var texto       = "";
+   var i           = 0;
+   var aleatorio   = 0;
+// Programa
+   do {
+	texto = "Introduzca un nombre:";
+	do {
+	    nombre = prompt (texto, "");
+            repe = false;
+	    for (i = 0; i < datos.length; i++) {
+	    	if (datos[i].nombre == nombre) {
+		    repe  = true;
+		    texto = "Nombre repe. Introduzca otro:";
+	        }
+	    }
+	} while (repe);
+	do {
+	    do {
+	        anio = parseInt(prompt("Año", 2018));
+	    } while (anio > hoy.getFullYear());
+	    do {
+	        mes = parseInt(prompt("Mes", 1));
+	    } while (mes < 1 || mes > 12);
+	    do {
+	        dia = parseInt(prompt("Dia", 1));
+	    } while (dia < 1 || dia > 31);
+	    fecha = new Date(anio, mes-1, dia);
+	} while (fecha >= hoy);
+	datos[datos.length] = new Persona(nombre, fecha);
+   } while (confirm("Más datos ?"));
+
+   fecha = new Date();
+   fecha.setFullYear(fecha.getFullYear() - 100);
+   for (i = 0; i < datos.length; i++) {
+	if (datos[i].nacimiento <= fecha) {
+	    centenarios[centenarios.length] = new Persona(datos[i].nombre, datos[i].nacimiento);
+	}
+   }
+   centenarios.sort(function(a, b) {return a.nacimiento.getTime()-b.nacimiento.getTime()});
+   document.write("CENTENARIOS <br>");
+   for (i = 0; i < centenarios.length; i++) {
+	document.write(centenarios[i].nombre + "<br>");
+   }
+
+   fecha = new Date();
+   document.write("<br>TODOS CON EDAD<br>");
+   for (i = 0; i < datos.length; i++) {
+	anio = fecha.getFullYear() - datos[i].nacimiento.getFullYear();
+	if (fecha.getMonth() < datos[i].nacimiento.getMonth() || (fecha.getMonth() == datos[i].nacimiento.getMonth() && fecha.getDate() < datos[i].nacimiento.getDate())) {
+	    anio -= 1;
+	}
+	document.write(datos[i].nombre + ".- " + anio + "<br>");
+   }
+
+   fecha = new Date();
+   document.write("<br>CUMPLEN AÑOS<br>");
+   for (i = 0; i < datos.length; i++) {
+	if (datos[i].nacimiento.getMonth() == fecha.getMonth() && datos[i].nacimiento.getDate() == fecha.getDate()) {
+	    document.write(datos[i].nombre + "<br>");
+        }
+   }
+
+   document.write("<br>PREMIADO<br>");
+   i = datos.length;
+   aleatorio = Math.floor(Math.random() * i);
+   document.write(datos[aleatorio].nombre);
+  </script>
+ </body>
+</html>

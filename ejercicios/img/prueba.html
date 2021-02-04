@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <script type="text/javascript"></script>
+        <title>Mi pagina de prueba</title>
+    </head>
+    <body>
+
+        <img src="1.png" name="imagen"> 
+
+        <script>
+            var imgArray = new Array("0.png", "1.png", "2.png", "3.png");
+            
+            document.images["imagen"].src = "1.png";
+           
+            var numero = Math.floor(Math.random()*4);
+
+            var posicion = imgArray[numero];
+
+            document.images["imagen"].src = imgArray[numero];
+            
+            document.cookie = "imagen=" + posicion ;
+
+            cambiarFoto();
+
+            function cambiarFoto(){
+                var numero = Math.floor(Math.random()*4);
+                var posicion = imgArray[numero];
+                
+                document.images["imagen"].src = posicion;
+                setTimeout(cambiarFoto, 100);
+                // document.cookie = "imagen=" + posicion;
+
+            }
+
+
+        </script>
+    </body>
+</html>
+
