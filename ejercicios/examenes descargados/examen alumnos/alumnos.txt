@@ -1,6 +1,7 @@
 (10 puntos) Hacer un programa que contenga:
 
-La definición del objeto Alumno con las siguientes características:
+La definición del objeto Alumno con las siguientes 
+características:
 
 	Propiedades:
 

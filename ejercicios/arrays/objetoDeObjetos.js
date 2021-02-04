@@ -39,20 +39,5 @@ document.write("Años: " + mi_edad + "<br>");
 document.write("La nota media es: " + mi_media + "<br>");
 
 
-// ---------------------------------------------------------------------------------
-
-
-// var mi_alumno2 = new Alumno(mi_alumno.persona, mi_alumno.n_cli, mi_alumno.n_ser); // asi se crea una copia del objeto alumno
-
-// // otra forma es:
-// mi alumno2 = new Alumno();
-// mi_alumno2.persona.nombre   = mi_alumno.persona.nombre;
-// mi_alumno2.persona.edad     = mi_alumno.persona.edad;
-// mi_alumno2.nota_dwec        = mi_alumno.nota_dwec;
-// mi_alumno2.nota_dwes        = mi_alumno.nota_dwes;
-
-// aprender a crear un objeto con []
-
-
 
 
