@@ -27,3 +27,18 @@
     width: 300px;
     margin: auto;
 }
+
+.tablaMovimientos {
+    background-color: bisque;
+    border: black 1px solid;
+    width: 500px;
+    margin: auto;
+}
+
+table {
+    border-spacing: 0px;
+}
+
+td {
+    border-top: black 1px solid;
+}
