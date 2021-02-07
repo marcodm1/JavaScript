@@ -112,14 +112,25 @@ function cargarEventos(evento) {
         
     }
 
-    // function añadirDIV() {
-    //     var nuevoTD = document.createElement('td');
-    //     var padre   = document.getElementById('listaMovimientos');
-    //     padre.appendChild(nuevoTD);
+    function añadirDIV() {
+        var nuevoTR = document.createElement('tr');
         
-    //   }
+        nuevoTR.appendChild(crearTD("2021-01-21"));
+        nuevoTR.appendChild(crearTD("ingreso en efectivo"));
+        nuevoTR.appendChild(crearTD(50));
+        nuevoTR.appendChild(crearTD(150));
+        
+        var padre   = document.getElementById('listaMovimientos');
+        padre.appendChild(nuevoTR);
+        
+    }
 
 
+    function crearTD(texto) {
+        var nuevoTD = document.createElement('td');
+        nuevoTD.innerHTML = texto;
+        return nuevoTD;
+    }
 }
 
 

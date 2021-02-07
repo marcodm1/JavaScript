@@ -1,55 +1,79 @@
-// var fecha = new Date();
- 
-//document.write("Vamos a ver todo sobre este momento:<br>");
-//mostrarTodo(fecha);
+// ahoraMismo ahoraMismo para todas las pruebas
+var ahoraMismo = new Date();
 
-//document.write("<br>Le sumamos 24 horas: <br>");
-//sumarTiempo(fecha, 24);
+// __________________________________EJERCICIO 1 ___________________________________
+document.write("Ejercicio 1: Calcular de una ahoraMismo, su edad<br>");
+var marco     = new Date('1990, 4, 19');
+var marcoMili = ahoraMismo-marco;
+var marcoAños = ((((marcoMili/1000)/60)/60)/24)/365; 
 
-//document.write("<br>Le sumamos 10 minutos: <br>");
-//sumarTiempo(fecha, 0.16);
+document.write("Mi edad en milisegundos: "                  + marcoMili + "<br>");
+document.write("Mi edad en años sin redondear: "            + marcoAños + "<br>");
+document.write("Mi edad en años redondeados hacia abajo: "  + Math.floor(marcoAños) + "<br>");
+document.write("Mi edad en años redondeados hacia arriba: " + Math.round(marcoAños) + "<br>");
+document.write("Mi edad de en milisegundos: "               + marco.getMilliseconds() + "<br>"); // por alguna razon no me lo hace
 
-///document.write("Ahora ponemos una fecha 10/10/2020 para ver la diferencia de tiempo entre una y otra");
-// var fecha2 = new Date(10/10/2020);
-//calcularDiferencia(fecha, fecha2);
+// __________________________________EJERCICIO 2 ___________________________________
+document.write("<br><br>Ejercicio 2: Calcular en horas al diferencia de edad entre dos personas<br>");
+var juan         = new Date('1990, 3, 19');
+var pedro        = new Date('1990, 3, 20');
+var juanMili     = ahoraMismo-juan;
+var pedroMili    = ahoraMismo-pedro;
+var diffenHoras  = ((((juanMili - pedroMili)/1000)/60)/60);
+document.write("La diferencia en horas es de: " + diffenHoras);
+
+// __________________________________EJERCICIO 3 ___________________________________
+document.write("<br><br>Ejercicio 3: Ver opciones con la fecha actual: <br>");
+
+mostrarTodo(ahoraMismo);
+
+// document.write("<br>Le sumamos 24 horas: <br>");
+// sumarTiempo(ahoraMismo, 24);
+
+// document.write("<br>Le sumamos 10 minutos: <br>");
+// sumarTiempo(ahoraMismo, 0.16);
+
+// /document.write("Ahora ponemos una ahoraMismo 10/10/2020 para ver la diferencia de tiempo entre una y otra");
+// var ahoraMismo2 = new Date(10/10/2020);
+// CalcularDiferencia(ahoraMismo, ahoraMismo2);
 
 
 
 
-// function mostrarTodo(fecha){
-//     document.write("Fecha completa: "                     + fecha);
-//     document.write("<br>Milisegundos desde (1/01/1970): " + fecha.getTime());
-//     document.write("<br>Segundo: "                        + fecha.getSeconds());
-//     document.write("<br>Minuto: "                         + fecha.getMinutes());
-//     document.write("<br>Hora: "                           + fecha.getHours());
-//     document.write("<br>Dia del mes: "                    + fecha.getDate());
-//     document.write("<br>Dia de la semana(Lunes = 1): "    + fecha.getDay());
-//     document.write("<br>Mes (enero = 0): "                + fecha.getMonth());
-//     document.write("<br>Año:"                             + fecha.getFullYear());
-//     document.write("<br>Son las: " + fecha.getHours() + "horas " + fecha.getMinutes() + "minutos " + fecha.getSeconds() + "segundos: ");
-//     document.write(" del dia " + fecha.getDate() + "/" + fecha.getMonth() + "/" + fecha.getFullYear() + "<br>");
+function mostrarTodo(ahoraMismo){
+    document.write("Los milisegundos desde (1/01/1970) hasta ahora: " + ahoraMismo.getTime());
+    document.write("<br>Son las: " + ahoraMismo.getHours() + "horas " + ahoraMismo.getMinutes() + "minutos " + ahoraMismo.getSeconds() + "segundos: ");
+    document.write(" del dia " + ahoraMismo.getDate() + "/" + ahoraMismo.getMonth() + "/" + ahoraMismo.getFullYear() + "<br>");
+    document.write("<br>Fecha completa: "                 + ahoraMismo);
+    document.write("<br>Segundo: "                        + ahoraMismo.getSeconds());
+    document.write("<br>Minuto: "                         + ahoraMismo.getMinutes());
+    document.write("<br>Hora: "                           + ahoraMismo.getHours());
+    document.write("<br>Dia del mes: "                    + ahoraMismo.getDate());
+    document.write("<br>Dia de la semana(Lunes = 1): "    + ahoraMismo.getDay());
+    document.write("<br>Mes (enero = 0): "                + ahoraMismo.getMonth());
+    document.write("<br>Año:"                             + ahoraMismo.getFullYear());
+}
+
+// function sumarTiempo(ahoraMismo, horas){
+//     var resultado = ahoraMismo.getTime() + (1000 * 60 * 60 * horas);  
+//     ahoraMismo.setTime(resultado);
+//     document.write("Dia " + ahoraMismo.getDate() + "/" + ahoraMismo.getMonth() + "/" + ahoraMismo.getFullYear());
+//     document.write(" son las: " + ahoraMismo.getHours() + "horas " + ahoraMismo.getMinutes() + "minutos " + ahoraMismo.getSeconds() + "<br>");
 // }
 
-// function sumarTiempo(fecha, horas){
-//     var resultado = fecha.getTime() + (1000 * 60 * 60 * horas);  
-//     fecha.setTime(resultado);
-//     document.write("Dia " + fecha.getDate() + "/" + fecha.getMonth() + "/" + fecha.getFullYear());
-//     document.write(" son las: " + fecha.getHours() + "horas " + fecha.getMinutes() + "minutos " + fecha.getSeconds() + "<br>");
-// }
 
 
+// function CalcularDiferencia(ahoraMismo, ahoraMismo2){ // 546163186344545
+//     var marcoAños  = new Date('04/19/1990');
 
-// function calcularDiferencia(fecha, fecha2){ // 546163186344545
-//     var miEdad  = new Date('04/19/1990');
-
-//     var diff = fecha.getFullYear() - fecha2.getFullYear();
+//     var diff = ahoraMismo.getFullYear() - ahoraMismo2.getFullYear();
 
 
 // }
 
 
 
-// document.write("<br>Ahora nos dan una fecha de un viejo de 100 años:<br>");
+// document.write("<br>Ahora nos dan una ahoraMismo de un viejo de 100 años:<br>");
 // var abuelo   = new Date('12/09/1920');
 // var abueloMili = abuelo.getTime();
 // abuelo.setTime(abueloMili);
@@ -59,7 +83,7 @@
 // var viejo2 = new Date(abueloMili + (1000*60*60*24*365));
 // document.write(viejo2 + "<br>");
 
-// document.write("<br>Ahora calcular el tiempo de carrera:<br>");
+// document.write("<br>Ahora Calcular el tiempo de carrera:<br>");
 
 // var salida      = new Date("11/25/2020");
 // salida.setTime  = salida.getTime() + (1000*60*60*10); // empieza el dia 11 a las 10
@@ -73,31 +97,12 @@
 
 // document.write("La carrera va a durar:" + horas + "h, " + minutos + "min, " + segundos + "segundos.<br>");
 
+// var ahoraMismo   = new Date();
+// var marco = new Date('1990, 4, 19');
 
-var hoy         = new Date();
-var nacimiento  = new Date('1990, 4, 19');
-
-var dias    = ((((hoy-nacimiento)/1000)/60)/60)/24;
-var meses   = parseInt((dias%365)/30);
-var anios   = parseInt(dias/365);
-dias        = parseInt((dias%365)%30);
-
-document.write("Hoy es: " + hoy);
-document.write("<br />Fecha de nacimiento → " + nacimiento);
-document.write("<br /> " + anios + " años, " + meses + " meses, " + dias + " días.<br><br>");
+// var diferencia = ahoraMismo-marco;
+// diferencia = ((((diferencia/1000)/60)/60)/24)/365;
+// var redondeado = Math.floor(diferencia);
+// document.write(redondeado);
 
 
-
-var misAños = hoy.getFullYear()-nacimiento.getFullYear();
-
-document.write("Restamos el año actual, " + hoy.getFullYear() + "- mi año, " + nacimiento.getFullYear() + ": ");
-document.write(" es decir, tengo: " + (hoy.getFullYear() - nacimiento.getFullYear()) + "<br>");
-
-document.write("tengo " + nacimiento.getMilliseconds() + " años<br>");
-document.write("Mis años en milis son: " + 1000*60*60*24*31*12*misAños + "<br>");
-var dd = new Date(996364800000);
-document.write("Mis años desde 996364800000 milis: " + dd.getFullYear() + "<br>");
-document.write(hoy.getFullYear() + "<br>");
-document.write(nacimiento.getFullYear() + "<br>");
-
-1000*60*60*24*31*12*30

@@ -1,14 +1,3 @@
-(10 puntos) Hacer un programa que contenga:
-
-La definición del objeto Alumno con las siguientes 
-características:
-
-	Propiedades:
-
-		DNI
-		Nombre
-		CodPostal
-		FechaNacimiento (objeto de tipo Date)
 
 	Métodos:
 
