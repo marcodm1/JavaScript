@@ -11,7 +11,6 @@ document.write("Mi edad en milisegundos: "                  + marcoMili + "<br>"
 document.write("Mi edad en años sin redondear: "            + marcoAños + "<br>");
 document.write("Mi edad en años redondeados hacia abajo: "  + Math.floor(marcoAños) + "<br>");
 document.write("Mi edad en años redondeados hacia arriba: " + Math.round(marcoAños) + "<br>");
-document.write("Mi edad de en milisegundos: "               + marco.getMilliseconds() + "<br>"); // por alguna razon no me lo hace
 
 // __________________________________EJERCICIO 2 ___________________________________
 document.write("<br><br>Ejercicio 2: Calcular en horas al diferencia de edad entre dos personas<br>");
