@@ -2,7 +2,7 @@
 //  ^ .- inicio de cadena.
 //  $ .- fin de cadena.
 var palabra = "A3r";
-var condiciones = new RegExp("^A3r$","g");
+var condiciones = new RegExp("^A3r$");
     if (condiciones.test(palabra)){
         document.write(palabra + " es OK<br>");
     } else {
@@ -11,16 +11,17 @@ var condiciones = new RegExp("^A3r$","g");
 
 
 var tlf = "915987569"
-var condiciones = new RegExp("^91[0-9]{6}","g");
+// var condiciones = new RegExp("^91[0-9]{6}");
+var condiciones = /^91[0-9]{6}$/;
 if (condiciones.test(tlf)){
     document.write(tlf + " es OK<br>");
 } else {
     document.write(tlf + " es KO<br>");
-}    
+} 
 
 
 var dni = "54869256n"
-var condiciones = new RegExp("^[0-9]{8}[a-z]$","g"); 
+var condiciones = new RegExp("^[a-z]{6}$"); 
 if (condiciones.test(dni)){
     document.write(dni + " es OK<br>");
 } else {
@@ -29,13 +30,17 @@ if (condiciones.test(dni)){
 
 
 var dni = "916598546" // esto no me funciona con el 93
-var condiciones = new RegExp("^(91)|(93) [0-9] {6}$","g");
+var condiciones = new RegExp("^(91)|(93) [0-9] {6}$");
 if (condiciones.test(dni)){
     document.write(dni + " es OK<br>");
 } else {
     document.write(dni + " es KO<br>");
 }
 
+var email = "ejemplo@ejemplo.es";
+var email = "ejemplo.ejemplo@ejemplo.es";
+
+var condiciones = "/[[a-z]{3,10}\.]?[a-z]{3,10}@[a-z]{3,10}\.[a-z]{3}";
 
 
 
