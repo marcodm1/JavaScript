@@ -86,9 +86,9 @@ function cargarEventos(evento) {
     }
 
     function EliminarParrafo(evento) {
-        var respuesta = parseInt(prompt("Elija el párrafo que quiera eliminar"));
-        var padre = document.getElementById("contenedor1");
-        var hijo  = document.getElementsByTagName("p")[respuesta-1];
+        var respuesta   = parseInt(prompt("Elija el párrafo que quiera eliminar"));
+        var padre       = document.getElementById("contenedor1");
+        var hijo        = document.getElementsByTagName("p")[respuesta-1];
         padre.removeChild(hijo);
     }
 
@@ -96,7 +96,7 @@ function cargarEventos(evento) {
     var cont = 4;
     function añadirParrafo(evento) { 
         var nuevoParrafo        = document.createElement("p");
-        nuevoParrafo.innerHTML  = "parrafo" + cont;
+        nuevoParrafo.innerHTML  = `parrafo ${cont}`; // concatenacion "invent" por kero template strings
         cont ++;
         var padre               = document.getElementById("contenedor1");
         padre.appendChild(nuevoParrafo);
