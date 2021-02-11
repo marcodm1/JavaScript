@@ -28,6 +28,6 @@ function cargarEventos(evento) {
         padre.appendChild(nuevoParrafo);
     }
 
-
+k
 }
 */
