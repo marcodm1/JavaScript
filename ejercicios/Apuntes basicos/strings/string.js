@@ -47,15 +47,15 @@ document.write(cadena.concat("-hola")           + "<br>");
 // toLowerCase().- convierte a minúsculas.
 // toUpperCase().- convierte a mayúsculas.
 
-document.write("Todo en minusculas: " + cadena.toLowerCase() + "<br>");
-document.write("Todo en mayusculas: " + cadena.toUpperCase() + "<br>");
-document.write("Creo subcadena desde la posicion 3 a la 5: " + cadena.substring(3,5) + "<br>");
-document.write("Crear cadena desde posicion 4 pero en mayusculas: " + cadena.substring(4).toUpperCase()+ "<br>");
-document.write("Ultima posicion de la letra 'a': " + cadena.lastIndexOf("a") + "<br>");
-document.write("Posicion de 'en': " + cadena.indexOf("en") + "<br>");
-document.write("Subcadena desde la posicion 4: " + cadena.substr(4) + "<br>");
-document.write("Char en la posicion 4: " + cadena.charAt(4)                 + "<br>");
-document.write("Le concatenamos 'hola' a CaDenAa: " + cadena.concat("-hola")           + "<br>");
+document.write("Todo en minusculas: "                               + cadena.toLowerCase()              + "<br>");
+document.write("Todo en mayusculas: "                               + cadena.toUpperCase()              + "<br>");
+document.write("Creo subcadena desde la posicion 3 a la 5: "        + cadena.substring(3,5)             + "<br>");
+document.write("Crear cadena desde posicion 4 pero en mayusculas: " + cadena.substring(4).toUpperCase() + "<br>");
+document.write("Ultima posicion de la letra 'a': "                  + cadena.lastIndexOf("a")           + "<br>");
+document.write("Posicion de 'en': "                                 + cadena.indexOf("en")              + "<br>");
+document.write("Subcadena desde la posicion 4: "                    + cadena.substr(4)                  + "<br>");
+document.write("Char en la posicion 4: "                            + cadena.charAt(4)                  + "<br>");
+document.write("Le concatenamos 'hola' a CaDenAa: "                 + cadena.concat("-hola")            + "<br>");
 
 
 
