@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<div id="demo">
+<h2>The XMLHttpRequest Object</h2>
+<button type="button" onclick="loadDoc()">Cambiar contenido</button> <!--cuando pulsa, pasan cosas --> 
+</div>
+<!-- ajax funciona asincrona, como whatsapp, la envia cuando puede y el server responde cuando pueda -->
+
+<!--  separar el js -->
+<script>
+function loadDoc() {
+  var peticion = new XMLHttpRequest();
+  peticion.onreadystatechange = function() { // si onready. osea, cuando recibe x...
+    if (this.readyState == 4 && this.status == 200) { // cuando el estado sea 4, osea cuando treminrd dr rnviar info y encima sin errores
+      document.getElementById("demo").innerHTML = this.responseText; // demo es el div de arriba y .inner es el ontenido del div
+    }  // this.responseText tiene el echo que devuelve de php
+  };
+  peticion.open("GET", "http://localhost/JavaScript/JavaScript/ejercicios/ajax/ajax2.php?jj=2", true);
+  peticion.send();
+}
+</script>
+
+</body>
+</html>
