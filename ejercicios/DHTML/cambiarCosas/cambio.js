@@ -3,26 +3,28 @@ document.addEventListener("readystatechange", cargarEventos, false);
 
 function cargarEventos(evento) {
     if (document.readyState == "interactive") {
-        document.getElementById("boton0").addEventListener("click",  cambiarTextos, true);
-        document.getElementById("boton1").addEventListener("click",  convertir1Arojo, true);
-        document.getElementById("boton2").addEventListener("click",  cambiar1Averde, true);
-        document.getElementById("boton3").addEventListener("click",  cabiar1Aazul, true);
-        document.getElementById("boton4").addEventListener("click",  cambiar2siguienteColor, true);
-        document.getElementById("boton5").addEventListener("click",  convertir2Arojo, true);
-        document.getElementById("boton6").addEventListener("click",  convertir2Averde, true);
-        document.getElementById("boton7").addEventListener("click",  convertir2Aazul, true);
-        document.getElementById("boton8").addEventListener("click",  cambiarLosColores, true);
-        document.getElementById("boton9").addEventListener("click",  ocultarOno, true);
+        document.getElementById("boton0" ).addEventListener("click", cambiarTextos, true);
+        document.getElementById("boton1" ).addEventListener("click", convertir1Arojo, true);
+        document.getElementById("boton2" ).addEventListener("click", cambiar1Averde, true);
+        document.getElementById("boton3" ).addEventListener("click", cabiar1Aazul, true);
+        document.getElementById("boton4" ).addEventListener("click", cambiar2siguienteColor, true);
+        document.getElementById("boton5" ).addEventListener("click", convertir2Arojo, true);
+        document.getElementById("boton6" ).addEventListener("click", convertir2Averde, true);
+        document.getElementById("boton7" ).addEventListener("click", convertir2Aazul, true);
+        document.getElementById("boton8" ).addEventListener("click", cambiarLosColores, true);
+        document.getElementById("boton9" ).addEventListener("click", ocultarOno, true);
         document.getElementById("boton10").addEventListener("click", EliminarParrafo, true);
         document.getElementById("boton11").addEventListener("click", añadirParrafo, true);
         document.getElementById("boton12").addEventListener("click", modificarContenido, true);
         document.getElementById("boton13").addEventListener("click", añadirDIV, true);
+        // document.getElementById("boton14").addEventListener("click", añadirDIV, true);
     }
         
     function cambiarTextos(evento) {
         var aux1 = document.getElementsByTagName("p")[0].innerHTML;
         document.getElementsByTagName("p")[0].innerHTML = document.getElementsByTagName("p")[1].innerHTML;
         document.getElementsByTagName("p")[1].innerHTML = aux1;
+        console.log(evento);
     }
 
 

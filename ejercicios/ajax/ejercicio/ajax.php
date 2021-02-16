@@ -1,8 +1,7 @@
 <?php
-    if (strcmp($_GET['jj'], '1') === 0 ) {
-        echo "Ajax recbe PEPE";
+    if ($_GET['jj'] == '1') {
+        echo "Ajax recibe Pepe";
     }else {
         echo "Ajax recibe Luis";
-        echo "hhi";
     }
 ?>

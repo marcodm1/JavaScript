@@ -1,5 +1,3 @@
-// esto funciona? y porque ?
-
 document.addEventListener("readystatechange",cargarEventos,False);
 
 function cargarEventos(evento) {
