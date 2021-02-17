@@ -14,7 +14,7 @@ function cargarEventos(evento) {
             }
         }
         var miPersona = crearPersona();
-        peticion.open("GET", "http://localhost/JavaScript/ejercicios/ajax/ejercicio1/ejer1.php", true);
+        peticion.open("GET", "http://localhost/JavaScript/ajax/persona/persona.php?x=" + JSON.stringify(miPersona), true);
         peticion.send(null);
     }
 
@@ -29,8 +29,8 @@ function crearPersona() {
             this.edad   = edad;
         }
     }
-    var nombre  = document.getElementById("strNombre");
-    var edad    = document.getElementById("intEdad");
+    var nombre  = document.getElementById("strNombre").value;
+    var edad    = document.getElementById("intEdad").value;
     var persona = new Persona(nombre, edad);
 
     return persona;
