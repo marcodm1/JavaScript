@@ -1,41 +1,21 @@
 <!DOCTYPE html>
-<html>
-<body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+  <body>
+    <div id="contenedor1">
+      <h2>Rellenamos y recibimos que quieren decir esos campos</h2>
 
-<div id="demo">
-<h2>The XMLHttpRequest Object</h2>
-<button type="button" onclick="loadDoc()">Cambiar contenido</button> <!--cuando pulsa, pasan cosas --> 
-</div>
-<!-- ajax funciona asincrona, como whatsapp, la envia cuando puede y el server responde cuando pueda -->
-
-<!--  separar el js -->
-  <script>
-    function loadDoc() {// sirve para hacer o recibir peticiones asincronas
-      var peticion = new XMLHttpRequest(); // llamara a su propia funcion onreadystatechange en algun momento
-      peticion.onreadystatechange = function() { // si onready. osea, cuando recibe x...  
-        if (this.readyState == 4 && this.status == 200) { // estos codigos, los devuelve el servidor, cuando el estado sea 4, osea cuando treminrd dr rnviar info y encima sin errores
-          document.getElementById("demo").innerHTML = this.responseText; // demo es el div de arriba y .inner es el ontenido del div
-        }  // this.responseText tiene el echo que devuelve de php
-      }
-      peticion.open("GET", "http://localhost/JavaScript/ejercicios/ajax/ejercicio/ajax.php?jj=2&jd=12", true); // cuando se reciban esos datos, se llama a la funcion de onreadystatechange
-      peticion.send();  
-    } // https://developer.mozilla.org/es/docs/Web/API/XMLHttpRequest
-
-    
-    
-
-
-    class Coche {
-      constructor(color, modelo){
-        this.color  = color;
-        this.modelo = modelo;
-      }
-    }
-
-
-
-
-  </script>
-
-</body>
+          <form action="rango.php" method="GET">
+              <label for="strNombre"> Nombre? </label>
+                  <input type="text" name="name"   id="strNombre" >
+              <label for="intEdad"> Edad? </label>
+                  <input type="number" name="edad" id="intEdad" >
+              <input type="button" id="boton0" value="Enviar"> 
+          </form>
+      </div>
+  </body>
 </html>
