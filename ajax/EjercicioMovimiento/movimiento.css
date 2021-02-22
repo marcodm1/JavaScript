@@ -1,0 +1,39 @@
+body {
+    background-color: rgb(203, 250, 203);
+}
+
+.contenedor1 {
+    background-color: rgb(166, 243, 166);
+    border: solid 1px black;
+    padding: 10px;max-width: 350px;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+h2 {
+    margin-top: 5px
+}
+
+.tablaMovimientos {
+    background-color: rgb(166, 243, 166);
+    border: solid 1px black;
+    margin: auto;
+    width: 450px;
+    
+}
+
+table {
+    border-spacing: 0px;
+}
+
+td {
+    border-top: black 1px solid;
+}
+
+form {
+    text-align:right;
+    margin-right: 80px;
+}
+#añadir {
+    padding-right: 47px;
+}

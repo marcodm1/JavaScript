@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en"></html>
+<meta charset="UTF-8">
+<script type="text/javascript" src="movimiento.js"></script>
+<link rel="stylesheet" href="movimiento.css">
+
+<html>
+    <body>
+        <div class="contenedor1">
+        <h2>Añadir movimiento del banco</h2>
+
+            <form action="movimiento.php" method="GET">
+                <label for="strFecha"> Fecha </label>
+                    <input type="text" name="fecha" id="strFecha"><br>
+
+                <label for="strDesc"> Descripcion </label>
+                    <input type="text" name="descripcion" id="strDesc"><br>
+
+                <label for="intImporte"> Importe </label>
+                    <input type="number" name="importe" id="intImporte"><br>
+
+                <label for="intSaldo"> Saldo </label>
+                    <input type="number" name="saldo" id="intSaldo"><br>
+
+
+                <button id="añadir">Añadir movimiento</button>
+            </form>
+
+            
+        </div>
+        <div class="contenedor2">
+            <table class="tablaMovimientos">
+                <thead>
+                    <tr>
+                      <th colspan="4">Listado de movimientos</th>
+                    </tr>
+                </thead>
+                <tbody class="listaMovimientos">
+                    <tr>
+                      <td>Fecha.</td>
+                      <td>Descripcion.</td>  
+                      <td>Importe.</td>
+                      <td>Saldo.</td>
+                    </tr>
+                    <tr>
+                      <td>2021-01-20</td>
+                      <td>Ingreso en efectivo</td>
+                      <td>100</td>
+                      <td>100</td>
+                    </tr>
+                </tbody>    
+                    
+
+
+            </table>
+
+        </div>
+    </body>
+</html>
+
+
+
+

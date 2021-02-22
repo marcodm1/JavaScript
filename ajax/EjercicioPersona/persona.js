@@ -5,21 +5,22 @@ function cargarEventos(evento) {
         document.getElementById("boton0").addEventListener("click",  enviarRecibir, true);
     }
         
-    function enviarRecibir() {
+    function enviarRecibir(evento) {
+        evento.preventDefault(); // hace que no se comporte como por defecto, para que no haga submit del formulario
         var peticion = new XMLHttpRequest();
+        
         peticion.onreadystatechange = function() { // cuando la  peticion. el estado este todo ok
             if (this.readyState == 4 && this.status == 200) { // si .readyState este en 4, que es finalizado, y status = 200 que es finalizado
-                var miobjeto = JSON.parse(this.responseText); // parse convierte, como parseInt, y en este caso l oconvierte a Json responseText es lo que devuelva el servidor
-                document.getElementById("contenedor1").innerHTML = miobjeto.nombre; // haz esto: responsetext es lo que devuelve el servidor
+                var miobjeto = JSON.parse(this.responseText); // parse convierte, como parseInt, y en este caso l oconvierte a Json responseText es lo que devuelva php
+                document.getElementsByClassName("contenedor1")[0].innerHTML = miobjeto.nombre; // haz esto: responsetext es lo que devuelve el servidor
             }
         }
-        var miPersona  = crearPersona();
-        var objetoJson = JSON.stringify(miPersona); 
-        peticion.open("GET", "http://localhost/JavaScript/ajax/persona/persona.php?" + objetoJson, true);
-        peticion.send(null);
+        var objPersona  = crearPersona();
+        var objJson     = JSON.stringify(objPersona);
+        console.log(objJson);
+        peticion.open("POST", "http://localhost/JavaScript/ajax/EjercicioPersona/persona.php", true);
+        peticion.send(objJson); // el parametro es el body
     }
-
-
 
 }
 
