@@ -18,7 +18,7 @@ function cargarEventos(evento) {
         var objPersona  = crearPersona();
         var objJson     = JSON.stringify(objPersona);
         console.log(objJson);
-        peticion.open("POST", "http://localhost/JavaScript/ajax/EjercicioPersona/persona.php", true);
+        peticion.open("POST", "http://localhost/JavaScript/ajax/EjercicioPersona/persona.php", true); // en clase/casa: 
         peticion.send(objJson); // el parametro es el body
     }
 

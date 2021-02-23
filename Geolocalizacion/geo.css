@@ -1,0 +1,43 @@
+.tabla {
+    border: 1px solid black;
+    background-color: beige;
+    margin: auto;
+}
+
+.tablaHead {
+    border: 1px solid black;
+    background-color: beige;
+}
+
+.tablaHeadTR {
+    border: 1px solid black;
+    background-color: beige;
+}
+.tablaHeadTH1 {
+    border: 1px solid black;
+    background-color: beige;
+}
+.tablaHeadTH2 {
+    border: 1px solid black;
+    background-color: beige;
+}
+
+.tablaBody {
+    border: 1px solid black;
+    background-color: beige;
+}
+
+.tablaBodyTR {
+    border: 1px solid black;
+    background-color: beige;
+}
+
+.tablaBodyTD1 {
+    border: 1px solid black;
+    background-color: beige;
+}
+
+.tablaBodyTD2 {
+    border: 1px solid black;
+    background-color: beige;
+}
