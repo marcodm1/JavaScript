@@ -1,32 +1,27 @@
-document.addEventListener("readystatechange", cargarEventos, false);
 
-function cargarEventos(evento) {
-    if (document.readyState == "interactive") {
-        document.getElementById("actualizar" ).addEventListener("click", añadirCoords, true);
+    // document.getElementById("actualizar" ).addEventListener("click", añadirCoords, true);
+
+    navigator.geolocation.getCurrentPosition((e)=>{
+        console.log(e)
+    },(e)=>{
+        console.log(e)
+    }); 
+    
+    
+    /* function gestionarFracaso() {
+        alert("Se ha producido el siquiente error" + error.message);
     }
-}
-    // function obtenerPosition() {
-    //     var opciones = {
-    //         enableHighAccuracy: true,
-    //         timeout: 10000,
-    //         maximumAge: 30000
-    //     }
-    //     navigator.geolocation.getCurrentPosition(añadirCoords, gestionarFracaso, opciones); 
-    // }
-
-    // function gestionarFracaso() {
-    //     alert("Se ha producido el siquiente error" + error.message);
-    // }
-
     function añadirCoords() {
-        for (var i = 0; i < 7; i++) {
-            var padre   = document.getElementsByClassName('tablaBodyTD2')[i];
-            padre.innerHTML = "p123123"; 
-        }
+        console.log(objeto.coords.latitude);
         
-        
-    }
+    } */
 
+    /**
+     * 
+     * var objeto = navigator.geolocation.getCurrentPosition;
+           
+            console.log(objeto.coords.latitude);
+     */
 
 // function gestionarExito(posicion) {
     //     document.getElementById("timestamp").innerHTML        = posicion.timestamp;
@@ -54,3 +49,15 @@ function cargarEventos(evento) {
         
     // }
 
+
+    document.addEventListener("readystatechange", cargarEventos, false);
+
+function cargarEventos(evento) {
+    if (document.readyState == "interactive") {
+        document.getElementById("actualizar" ).addEventListener("click", añadirCoords, true);
+    }
+}
+
+            
+    
+   
