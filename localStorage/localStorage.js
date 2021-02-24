@@ -7,7 +7,6 @@ document.getElementById("crear1").addEventListener("click", ()=>{
         localStorage.setItem(clave, valor);
         alert("Se ha creado el localStorage de " + clave);
     }
-    
 });
 
 document.getElementById("ver1").addEventListener("click", ()=> {
@@ -17,7 +16,6 @@ document.getElementById("ver1").addEventListener("click", ()=> {
     }else {
         alert(localStorage.getItem(clave));
     }
-    
 });
 
 document.getElementById("modificar1").addEventListener("click", ()=>{
@@ -47,7 +45,6 @@ document.getElementById("eliminar1" ).addEventListener("click", ()=>{
         alert(tarea);
         alert("No existe el localStorage seleccionado");
     }
-    
 });
 
 document.getElementById("eliminarT" ).addEventListener("click", ()=>{

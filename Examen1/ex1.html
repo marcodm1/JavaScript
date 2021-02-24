@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Examen parte 2</title>
+        <script src="jquery-3.2.1.js" type="text/javascript"></script>
+        <style>
+            table, #mensaje, #conexion {
+                display: none;
+            }
+            th, td {
+                border: 1px; 
+                border-style: solid;
+            }
+            </style>
+  </head>
+  <body>
+      <h3>CONEXIÓN ANTERIOR</h3>
+      <hr>
+      <p id="ultima_visita">Es la primera vez que visita esta página</p>
+      <div id="conexion">
+          Desde: LATITUD 
+          <input type="text" id="lati" value="0.0"> 
+          LONGITUD
+          <input type="text" id="longi" value="0.0"> 
+        </div>
+        <h3>DATOS</h3>
+        <hr>
+        Número de registro:
+        <input type="number" id="numero" value=0>
+        <input type="button" id="boton" value="Leer registro"><br/>
+        <table>
+            <tr>
+                <th>Num.</th>
+                <th>Fecha</th>
+                <th>Descripción</th>
+                <th>Importe</th>
+            </tr>
+        </table>
+        <p id="mensaje">Mensaje: Nº de registro erroneo</p>
+        
+        <script src="index.js"></script>
+    </body>
+    </html>
+    

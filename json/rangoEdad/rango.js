@@ -3,6 +3,7 @@ document.addEventListener("readystatechange", cargarEventos, false);
 function cargarEventos(evento) {
     if (document.readyState == "interactive") {
         document.getElementById("boton0").addEventListener("click",  cargar, true);
+    
     }
         
     function cargar() {
