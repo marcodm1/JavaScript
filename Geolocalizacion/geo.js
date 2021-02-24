@@ -2,19 +2,33 @@ document.addEventListener("readystatechange", cargarEventos, false);
 
 function cargarEventos(evento) {
     if (document.readyState == "interactive") {
-        document.getElementById("actualizar" ).addEventListener("click", obtenerPosition, true);
+        document.getElementById("actualizar" ).addEventListener("click", añadirCoords, true);
     }
 }
-    function obtenerPosition() {
-        var opciones = {
-            enableHighAccuracy: true,
-            timeout: 10000,
-            maximumAge: 30000
+    // function obtenerPosition() {
+    //     var opciones = {
+    //         enableHighAccuracy: true,
+    //         timeout: 10000,
+    //         maximumAge: 30000
+    //     }
+    //     navigator.geolocation.getCurrentPosition(añadirCoords, gestionarFracaso, opciones); 
+    // }
+
+    // function gestionarFracaso() {
+    //     alert("Se ha producido el siquiente error" + error.message);
+    // }
+
+    function añadirCoords() {
+        for (var i = 0; i < 7; i++) {
+            var padre   = document.getElementsByClassName('tablaBodyTD2')[i];
+            padre.innerHTML = "p123123"; 
         }
-        navigator.geolocation.getCurrentPosition(añadirCoords, gestionarFracaso, opciones); 
+        
+        
     }
 
-    // function gestionarExito(posicion) {
+
+// function gestionarExito(posicion) {
     //     document.getElementById("timestamp").innerHTML        = posicion.timestamp;
     //     document.getElementById("latitude").innerHTML         = posicion.coords.latitude;
     //     document.getElementById("longitude").innerHTML        = posicion.coords.longitude;
@@ -24,18 +38,6 @@ function cargarEventos(evento) {
     //     document.getElementById("heading").innerHTML          = posicion.coords.heading;
     //     document.getElementById("speed").innerHTML            = posicion.coords.speed;
     // }
-    function gestionarFracaso() {
-        alert("Se ha producido el siquiente error" + error.message);
-    }
-
-    function añadirCoords(evento) { 
-        var contenido = "ddddddd";
-        var padre     = document.getElementsByClassName('tablaBody')[0];
-        document.getElementsByTagName("tablaBodyTD2")[0].innerHTML = contenido;
-        padre
-    }
-
-
     // function añadirCoords() {
     //     var nuevoTR = document.createElement('tr');
         
@@ -46,17 +48,9 @@ function cargarEventos(evento) {
     //     nuevoTR.appendChild(crearTD("accuracy"));
 
     //     var padre   = document.getElementsByClassName('tablaBody')[0];
-    //     for (var i = 0; i <5; i++){
-            
     //     padre.appendChild(nuevoTR);
     //     }
         
         
     // }
 
-
-    // function crearTD(texto) {
-    //     var nuevoTD = document.createElement('tr');
-    //     nuevoTD.innerHTML = texto;
-    //     return nuevoTD;
-    // }
