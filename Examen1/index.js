@@ -20,36 +20,38 @@ if (localStorage.getItem("Ultima conexion") != null) {
 }
 
 
-function modificarContenido(texto) { 
+function modificarContenido(texto) { // funciona
     document.getElementById("ultima_visita").innerHTML = texto;
 }
 
-function rellenarTabla(json) { 
-    document.getElementById("ultima_visita").innerHTML = json.edad;
+function rellenarTabla(json) { // funciona
+    // document.getElementById("ultima_visita").innerHTML = json;
+    document.getElementById("lati").value = json[0];
+    document.getElementById("longi").value = json[1];
 }
 
 
-function añadirContenido(texto, contenido) { 
-    var hijo       = document.createElement("p");
-    hijo.innerHTML = texto + contenido; 
-    var padre      = document.getElementsByTagName("hr")[0];
-    padre.appendChild(hijo);
+function añadirContenido(donde, coordenada) { // funciona
+    if (donde == "latitud") {
+        document.getElementById("lati").value = coordenada;
+    }else {
+        document.getElementById("longi").value = coordenada;
+    }
 }
 
-function conseguirCoordenadas() {
+function conseguirCoordenadas() { // funciona
     conseguirLatitud();
     conseguirLongitud();
 }
 
-function conseguirLatitud() {
+function conseguirLatitud() {  // no  entra al error
     navigator.geolocation.getCurrentPosition(
         (posicion)=>{ // es una funcion
-            var texto = "La latitud = ";
-            añadirContenido(texto, posicion.coords.latitude);
-            localStorage.setItem("Latitud", posicion.coords.latitude);
+            añadirContenido("latitud", posicion.coords.latitude);
+            localStorage.setItem("latitud", posicion.coords.latitude);
         }, 
         (error)=>{
-            alert("sdfsd");
+            alert("lento"); // nunca entra al error
             if (localStorage.getItem("Latitud") != null) {
                 añadirContenido("La latitud = ", localStorage.getItem("Latitud"));
             } else {
@@ -58,41 +60,41 @@ function conseguirLatitud() {
             }
         },
         { 
-            timeout:3000
+            timeout:3000 // no me hace esto
         } 
     );
 }
 
-function conseguirLongitud() {
+function conseguirLongitud() { // no  entra al error
     navigator.geolocation.getCurrentPosition(
         (posicion)=>{
-            añadirContenido("La longitud = ", posicion.coords.Longitud);
-            localStorage.setItem("Longitud", posicion.coords.Longitud);
+            añadirContenido("longitud", posicion.coords.Longitud);
+            localStorage.setItem("longitud", posicion.coords.Longitud);
         }, 
         (error)=>{
+            alert("lento");
             if (localStorage.getItem("Longitud") != null) {
-                añadirContenido("La Longitud = ", localStorage.getItem("Longitud"));
+                añadirContenido("longitud", localStorage.getItem("longitud"));
             } else {
-                añadirContenido("La Longitud = ", posicion.coords.Longitud);
+                añadirContenido("longitud", posicion.coords.Longitud);
                 localStorage.setItem("Longitud", posicion.coords.Longitud);
             }
         },
         { 
-            timeout:3000
+            timeout:3
         } 
     );
 }
 
 document.addEventListener("readystatechange", cargarEventos, false);
-
-function cargarEventos(evento) {
+function cargarEventos(evento) { // funciona
     if (document.readyState == "interactive") {
         document.getElementById("boton").addEventListener("click", leerRegistro, true);
     }
 
-    function leerRegistro() {
-        var campo = document.getElementById("edad").value;
-        if (campo > 0 || campo < 20) {
+    function leerRegistro() { 
+        var campo = document.getElementById("numero").value;
+        if (campo > 0 && campo < 20) {
             enviarRecibir();
         }else {
             alert("El dato introducido no es correcto");
@@ -100,19 +102,19 @@ function cargarEventos(evento) {
     }
 }
 
-
-function enviarRecibir(evento) {
-    evento.preventDefault(); // hace que no se comporte como por defecto, para que no haga submit del formulario
+function enviarRecibir(evento) { // funciona
+    // evento.preventDefault(); //me da error si pongo esto
     var peticion = new XMLHttpRequest();
     
-    peticion.onreadystatechange = function() { // cuando la  peticion. el estado este todo ok
-        if (this.readyState == 4 && this.status == 200) { // si .readyState este en 4, que es finalizado, y status = 200 que es finalizado
-            var miobjeto = JSON.parse(this.responseText); // parse convierte, como parseInt, y en este caso l oconvierte a Json responseText es lo que devuelva php
-            rellenarTabla(miobjeto); // haz esto: responsetext es lo que devuelve el servidor
+    peticion.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) { 
+            var arrayPHP = JSON.parse(this.responseText); 
+            rellenarTabla(arrayPHP);
         }
     }
-    var edad = document.getElementById("edad").value;
+    var edad = document.getElementById("numero").value;
     var objJson     = JSON.stringify(edad);
     peticion.open("POST", "http://localhost/JavaScript/Examen1/leer.php", true);
+    // xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); // esto dice el profesor que falta?
     peticion.send(objJson); // el parametro es el body
 }
