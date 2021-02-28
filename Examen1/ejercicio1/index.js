@@ -1,4 +1,3 @@
-// meterlo en un html?
 if (localStorage.getItem("Ultima conexion") != null) {
     var ff               = localStorage.getItem("Ultima conexion");
     var ultimaConexion   = Date.parse(ff);
@@ -8,28 +7,51 @@ if (localStorage.getItem("Ultima conexion") != null) {
     var minutos          = Math.round(segundos/60);
     var horas            = Math.round(minutos/60);
     var dias             = Math.round(horas/24);
-    var texto = `Hacia ${dias} dias, ${horas} horas y ${minutos} minutos que no entrabas.`;
+    var texto = document.createTextNode(`Hacia ${dias} dias, ${horas} horas y ${minutos} minutos que no entrabas.`);
     modificarContenido(texto);
     localStorage.setItem("Ultima conexion", new Date());
     conseguirCoordenadas();
 }else {
     localStorage.setItem("Ultima conexion", new Date());
-    var texto = "Es la primera vez que visita esta página.";
+    var texto = documente.createTextNode("Es la primera vez que visita esta página.");
     modificarContenido(texto);
     conseguirCoordenadas();
 }
 
 
-function modificarContenido(texto) { // funciona
-    document.getElementById("ultima_visita").innerHTML = texto;
+function modificarContenido(texto) {
+    var padre = document.getElementById("ultima_visita");
+    padre.appendChild(texto);
 }
 
-function rellenarTabla(json) { // funciona
-    // document.getElementById("ultima_visita").innerHTML = json;
-    document.getElementById("lati").value = json[0];
-    document.getElementById("longi").value = json[1];
+function otroMovimiento(tablaMovimientos) {
+    for (var i = 0; i < tablaMovimientos.length; i++) {
+        rellenarNodoTr(tablaMovimientos[i]);
+    }
+} 
+
+function rellenarNodoTr(movimiento) {
+    var nuevoTr = crearTr();
+    
+    var th = document.createElement("th");
+    nuevoTr.appendChild(th);
+    var texto   = document.createTextNode("1");
+    th.appendChild(texto);
+
+    for (var i = 0; i <movimiento.length; i++) {
+        var th = document.createElement("th");
+        nuevoTr.appendChild(th);
+        var texto   = document.createTextNode(movimiento[i]);
+        th.appendChild(texto);
+    }
 }
 
+function crearTr() {
+    var nuevoTr = document.createElement('tr');
+    var table   = document.getElementsByTagName("table")[0];
+    table.appendChild(nuevoTr);
+    return nuevoTr;
+}
 
 function añadirContenido(donde, coordenada) { // funciona
     if (donde == "latitud") {
@@ -51,7 +73,6 @@ function conseguirLatitud() {  // no  entra al error
             localStorage.setItem("latitud", posicion.coords.latitude);
         }, 
         (error)=>{
-            alert("lento"); // nunca entra al error
             if (localStorage.getItem("Latitud") != null) {
                 añadirContenido("La latitud = ", localStorage.getItem("Latitud"));
             } else {
@@ -68,16 +89,15 @@ function conseguirLatitud() {  // no  entra al error
 function conseguirLongitud() { // no  entra al error
     navigator.geolocation.getCurrentPosition(
         (posicion)=>{
-            añadirContenido("longitud", posicion.coords.Longitud);
-            localStorage.setItem("longitud", posicion.coords.Longitud);
+            añadirContenido("longitud", posicion.coords.longitude);
+            localStorage.setItem("longitud", posicion.coords.longitude);
         }, 
         (error)=>{
-            alert("lento");
             if (localStorage.getItem("Longitud") != null) {
                 añadirContenido("longitud", localStorage.getItem("longitud"));
             } else {
-                añadirContenido("longitud", posicion.coords.Longitud);
-                localStorage.setItem("Longitud", posicion.coords.Longitud);
+                añadirContenido("longitud", posicion.coords.longitude);
+                localStorage.setItem("Longitud", posicion.coords.longitude);
             }
         },
         { 
@@ -105,16 +125,15 @@ function cargarEventos(evento) { // funciona
 function enviarRecibir(evento) { // funciona
     // evento.preventDefault(); //me da error si pongo esto
     var peticion = new XMLHttpRequest();
-    
     peticion.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) { 
-            var arrayPHP = JSON.parse(this.responseText); 
-            rellenarTabla(arrayPHP);
+            var tablaMovimientos = JSON.parse(this.responseText); 
+            otroMovimiento(tablaMovimientos);
         }
     }
-    var edad = document.getElementById("numero").value;
-    var objJson     = JSON.stringify(edad);
-    peticion.open("POST", "http://localhost/JavaScript/Examen1/leer.php", true);
-    // xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); // esto dice el profesor que falta?
-    peticion.send(objJson); // el parametro es el body
+    var num     = document.getElementById("numero").value;
+    var objJson = JSON.stringify(num); // tengo que hacerlo con get
+    peticion.open("POST", "http://localhost/JavaScript/Examen1/ejercicio1/leer.php", true); // en el examen dice que sera con get
+    // peticion.setRequestHeader("accept", "application/json");
+    peticion.send(objJson);
 }
