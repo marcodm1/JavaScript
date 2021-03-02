@@ -10,6 +10,10 @@ function cargarEventos(evento) {
 
 //____________________________________________
 function crearFormulario () {
+    var boton = document.getElementById("añadirFormulario");
+    boton.style.visibility = 'hidden'; // oculto el boton
+    boton.style.display    = 'none';   // y encima no ocupa espacio
+    // boton.style.visibility  = 'visible'; // si quisiera que se viese pero no se puede usar el display none antes
     añadirForNombrem();  // crear formulario
     añadirLabelNombre(); // añadirle el label con el nombre 
     añadirLabelCheck();  // añadirle el label del check
@@ -278,6 +282,8 @@ function añadirTextoOption() {
     padre.appendChild(texto);
 }
 
+
+
 //_____________ METER EL SELECT DEL OPTION ____________
 function añadirSelectOption() { // <select name="asignatura[]" id="asignatura">
     var select = document.createElement("select");
@@ -408,6 +414,7 @@ function crearOpction4() {
         padre.appendChild(texto);
     }
 
+    añadirBRNombre();
 }
 
 
