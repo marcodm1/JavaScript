@@ -126,8 +126,8 @@ function enviarRecibir(evento) { // funciona
     // evento.preventDefault(); //me da error si pongo esto
     var peticion = new XMLHttpRequest();
     peticion.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) { 
-            var tablaMovimientos = JSON.parse(this.responseText); 
+        if (peticion.readyState == 4 && peticion.status == 200) { 
+            var tablaMovimientos = JSON.parse(peticion.responseText); 
             otroMovimiento(tablaMovimientos);
         }
     }
