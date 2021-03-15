@@ -1,5 +1,6 @@
 // ahoraMismo ahoraMismo para todas las pruebas
 var ahoraMismo = new Date();
+    
 
 // __________________________________EJERCICIO 1 ___________________________________
 document.write("Ejercicio 1: Calcular de una ahoraMismo, su edad<br>");
@@ -104,4 +105,18 @@ function mostrarTodo(ahoraMismo){
 // var redondeado = Math.floor(diferencia);
 // document.write(redondeado);
 
-
+var yaa = new Date();
+document.write("<br>" );
+document.write("________________________" + yaa.getDate() + "   :1<br>");
+document.write("________________________" + yaa.getDay() + "   :2<br>");
+document.write("________________________" + yaa.getFullYear() + "   :3<br>");
+document.write("________________________" + yaa.getHours() + "   :4<br>");
+document.write("________________________" + yaa.getMilliseconds() + "   :5<br>");
+document.write("________________________" + yaa.getMinutes() + "   :6<br>");
+document.write("________________________" + yaa.getMonth() + "   :7<br>");
+document.write("________________________" + yaa.getSeconds() + "   :8<br>");
+document.write("________________________" + yaa.getTime() + "   :9<br>");
+document.write("________________________" + yaa.toDateString() + "   :19<br>");
+document.write("________________________" + yaa.toLocaleDateString() + "   :22<br>");
+document.write("________________________" + yaa.toLocaleString() + "   :23<br>");
+document.write("________________________" + yaa.toLocaleTimeString() + "   :24<br>");

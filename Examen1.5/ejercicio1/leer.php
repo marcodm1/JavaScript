@@ -16,6 +16,5 @@
         array_push($tabla, $movimientos[$i]);
     }
     $tabla = json_encode($tabla);
-    sleep(1);
     echo $tabla;
 ?> 

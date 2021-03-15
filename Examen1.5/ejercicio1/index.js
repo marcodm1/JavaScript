@@ -18,6 +18,7 @@ if (localStorage.getItem("Ultima conexion") != null) {
     conseguirCoordenadas();
 }
 
+
 function modificarContenido(texto) {
     var padre = document.getElementById("ultima_visita");
     padre.appendChild(texto);
@@ -136,5 +137,3 @@ function enviarRecibir(evento) { // funciona
     // peticion.setRequestHeader("accept", "application/json");
     peticion.send(objJson);
 }
-
-// para utilizar un objeto date desde php hay que pasarlo directo al objeto date

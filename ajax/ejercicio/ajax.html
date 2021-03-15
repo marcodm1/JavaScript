@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="text/javascript" src="ajax.js"></script>
 </head>
   <body>
     <div id="contenedor1">
-      <h2>Rellenamos y recibimos que quieren decir esos campos</h2>
+      <h2 id="hh2"></h2>
 
-          <form action="rango.php" method="GET">
-              <label for="strNombre"> Nombre? </label>
-                  <input type="text" name="name"   id="strNombre" >
-              <label for="intEdad"> Edad? </label>
-                  <input type="number" name="edad" id="intEdad" >
+          <form action="ajax.php" method="GET">
+
+              <label for="strNombre"> Nombre </label>
+                  <input type="number" id="name" value="0">
+
               <input type="button" id="boton0" value="Enviar"> 
           </form>
       </div>

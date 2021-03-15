@@ -1,7 +1,7 @@
 <?php
-    if ($_GET['jj'] == '1') {
-        echo "Ajax recibe Pepe";
+    if ($_GET['x'] == '1') {
+        echo "Ajax recibe correctamente";
     }else {
-        echo "Ajax recibe Luis";
+        echo "Ajax recibe incorrectamente";
     }
 ?>
